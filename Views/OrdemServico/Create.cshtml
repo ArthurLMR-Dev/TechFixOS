@@ -1,0 +1,69 @@
+@model TechFixOS.Models.Entidades.OrdemServico
+
+@{
+    ViewData["Title"] = "Nova Ordem de Serviço";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Abrir Ordem de Serviço</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="ClienteId" class="form-label"></label>
+                            <select asp-for="ClienteId" class="form-select" asp-items="ViewBag.ClienteId">
+                                <option value="">-- Selecione um cliente --</option>
+                            </select>
+                            <span asp-validation-for="ClienteId" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="TecnicoId" class="form-label"></label>
+                                <select asp-for="TecnicoId" class="form-select" asp-items="ViewBag.TecnicoId">
+                                    <option value="">-- Selecione um técnico --</option>
+                                </select>
+                                <span asp-validation-for="TecnicoId" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ServicoId" class="form-label"></label>
+                                <select asp-for="ServicoId" class="form-select" asp-items="ViewBag.ServicoId">
+                                    <option value="">-- Selecione um serviço --</option>
+                                </select>
+                                <span asp-validation-for="ServicoId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Status" class="form-label"></label>
+                                <select asp-for="Status" class="form-select">
+                                    <option value="Pendente">Pendente</option>
+                                    <option value="Em Andamento">Em Andamento</option>
+                                    <option value="Concluída">Concluída</option>
+                                    <option value="Cancelada">Cancelada</option>
+                                </select>
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+                            <button type="submit" class="btn btn-primary">Abrir OS</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

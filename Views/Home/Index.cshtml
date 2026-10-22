@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Início";
+}
+
+<style>
+    .card-atalho {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+    .card-atalho:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+</style>
+
+<div class="container mt-4">
+
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold">Bem-vindo ao TechFixOS</h1>
+        <p class="lead text-muted">Sistema de gestão de ordens de serviço. Utilize os atalhos abaixo para começar.</p>
+    </div>
+
+    <div class="row justify-content-center g-4">
+
+        <div class="col-md-4">
+            <a asp-controller="Cliente" asp-action="Create" class="text-decoration-none">
+                <div class="card card-atalho shadow-sm h-100 border-primary">
+                    <div class="card-body text-center p-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="text-primary mb-3" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                            <path d="M12.5 8a.5.5 0 0 1 .5.5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 .5-.5"/>
+                        </svg>
+                        <h5 class="card-title text-dark">Novo Cliente</h5>
+                        <p class="card-text text-muted">Cadastrar um novo cliente no sistema.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a asp-controller="OrdemServico" asp-action="Create" class="text-decoration-none">
+                <div class="card card-atalho shadow-sm h-100 border-success">
+                    <div class="card-body text-center p-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="text-success mb-3" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                        </svg>
+                        <h5 class="card-title text-dark">Nova Ordem de Serviço</h5>
+                        <p class="card-text text-muted">Abrir uma nova OS para atendimento.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        @if (User.IsInRole("Administrador"))
+        {
+            <div class="col-md-4">
+                <a asp-controller="Tecnico" asp-action="Index" class="text-decoration-none">
+                    <div class="card card-atalho shadow-sm h-100 border-warning">
+                        <div class="card-body text-center p-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="text-warning mb-3" viewBox="0 0 16 16">
+                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                            </svg>
+                            <h5 class="card-title text-dark">Gerir Técnicos</h5>
+                            <p class="card-text text-muted">Cadastrar e administrar a equipa técnica.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a asp-controller="Servico" asp-action="Index" class="text-decoration-none">
+                    <div class="card card-atalho shadow-sm h-100 border-info">
+                        <div class="card-body text-center p-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="text-info mb-3" viewBox="0 0 16 16">
+                                <path d="M6 1v3H1V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm14 12v3h-5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM6 8v7H1V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zm14-6v7h-5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zM8 8H7V7h1zm1 1H8V8h1zm1-1H9V7h1zM8 6H7V5h1zM7 7H6V6h1zM6 8H5V7h1zm1 1H6V8h1zm1-1H7V7h1zM6 6H5V5h1zM5 7H4V6h1zm1 1H4V7h1zm1-1H5V6h1zM5 5H4V4h1zm1 1H4V5h1zm1-1H5V4h1z"/>
+                            </svg>
+                            <h5 class="card-title text-dark">Gerir Serviços</h5>
+                            <p class="card-text text-muted">Configurar o catálogo de serviços e preços.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+
+    </div>
+</div>
