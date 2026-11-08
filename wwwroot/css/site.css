@@ -29,3 +29,53 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+/* Tabelas responsivas: em telas pequenas, cada linha vira um "card" com rótulo + valor */
+@media (max-width: 767.98px) {
+  .table-responsive-stack thead {
+    display: none;
+  }
+
+  .table-responsive-stack,
+  .table-responsive-stack tbody,
+  .table-responsive-stack tr,
+  .table-responsive-stack td {
+    display: block;
+    width: 100%;
+  }
+
+  .table-responsive-stack tr {
+    margin-bottom: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+
+  .table-responsive-stack td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0.75rem;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: right;
+  }
+
+  .table-responsive-stack td:last-child {
+    border-bottom: none;
+  }
+
+  .table-responsive-stack td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    text-align: left;
+    color: #495057;
+  }
+
+  /* Esconde o zebra-striping do Bootstrap que fica estranho no modo card */
+  .table-responsive-stack.table-striped > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-bg-type: transparent;
+  }
+}
