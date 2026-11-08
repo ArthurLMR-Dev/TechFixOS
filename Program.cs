@@ -35,6 +35,17 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 var app = builder.Build();
 
+// Cultura pt-BR: formata valores monetários em R$ e datas em dd/MM/yyyy
+var culturaPtBr = new System.Globalization.CultureInfo("pt-BR");
+System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culturaPtBr;
+System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culturaPtBr;
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture(culturaPtBr),
+    SupportedCultures = new[] { culturaPtBr },
+    SupportedUICultures = new[] { culturaPtBr }
+});
+
 // Middleware de log de exceções - deve ser o primeiro do pipeline
 app.UseMiddleware<TechFixOS.LogMiddleware>();
 
